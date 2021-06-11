@@ -1,2 +1,2 @@
 #!/bin/bash
-ls –lart ./hello
+chmod 400 ./hello
