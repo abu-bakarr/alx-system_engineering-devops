@@ -1,2 +1,2 @@
 #!/bin/bash
-find . -type d -name PATH\* -exec echo x \; | wc -l
+printenv PATH | tr ':' '\n' | wc -l
