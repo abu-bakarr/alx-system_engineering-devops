@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# Display Best School 10 times using "until".
+
+iterator=0
+until ((iterator>=10))
+do
+    echo "Best School"
+    ((iterator++))
+done
