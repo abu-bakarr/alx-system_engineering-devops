@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# Display Holberton School 10 times and at 9th line print Hi.
+
+iterator=0
+
+while ((iterator<10))
+do
+    if ((iterator==9))
+    then
+        echo "Hi"
+    fi
+    echo "Holberton School"
+    ((iterator++))
+done
