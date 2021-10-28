@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Display Holberton School 10 times and at 9th line print Hi.
+# Display Best School 10 times and at 9th line print Hi.
 
 iterator=0
 
@@ -9,6 +9,6 @@ do
     then
         echo "Hi"
     fi
-    echo "Holberton School"
+    echo "Best School"
     ((iterator++))
 done
