@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
-# Print 10 times Holberton use for loop
+# This script is displaying "Best School" 10 times
 
-for (( i=0; i<10; i++ ))
+word="Best School"
+
+for ((i = 0; i<10; i++)) 
 do
-   echo "Holberton School"
+	echo "$word"
 done
