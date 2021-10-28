@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# This script is displaying "Best School" 10 times
+
+iterator=0
+word="Best School"
+
+while ((iterator<10)) 
+do
+	echo "$word"
+	((iterator++))
+done
