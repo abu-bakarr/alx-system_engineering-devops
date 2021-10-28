@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# Display Best School 10 times and then 9th line print Hi.
+
+iterator=1
+
+while ((iterator<11))
+do
+    if ((iterator==4))
+    then
+        echo "bad luck"
+    elif ((iterator==8))
+    then
+        echo "good luck"
+    else
+        echo "Best School"
+    fi
+    ((iterator++))
+done
