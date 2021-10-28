@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# script for print Fizz Buzz
+
+iterator=1
+
+for ((iterator; iterator<=100; iterator++))
+do
+	if ((iterator % 3 == 0 && iterator % 5 == 0))
+	then
+		echo "FizzBuzz"
+	elif((iterator % 3 == 0))
+	then
+		echo "Fizz"
+	elif((iterator % 5 == 0))
+	then
+		echo "Buzz"
+	else
+		echo "$iterator"
+	fi
+done
