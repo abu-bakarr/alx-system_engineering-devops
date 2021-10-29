@@ -1,0 +1,24 @@
+#!/bin/sh
+# This script is done by abubakarr
+
+PID=$$
+FILE_Directory='/var/run/my_process.pid'
+echo "$PID" | sudo tee "$FILE_Directory" > /dev/null
+
+cleanup()
+{
+	sudo rm -f $FILE_Directory
+	exit 0
+}
+
+trap cleanup 15
+
+init()
+{
+	while :
+	do
+		echo 'I am alive!' >> /tmp/my_process
+		sleep 2
+	done
+}
+init
