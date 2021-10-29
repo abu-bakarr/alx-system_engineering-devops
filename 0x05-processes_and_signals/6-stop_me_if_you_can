@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
+# Done by Abubakarr
 
 pkill -f 4-to_infinity_and_beyond
