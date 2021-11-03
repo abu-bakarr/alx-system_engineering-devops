@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+#"Listen telnet localhost on port 98"
+echo "test"
