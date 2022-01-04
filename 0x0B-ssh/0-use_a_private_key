@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# tryna conect to my ssh server
+ssh -i ~/.ssh/holberton ubuntu@35.196.96.41
