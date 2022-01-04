@@ -1,12 +1,11 @@
-# Create changes with puppet at ssh_config
-file_line {'Turn off passwd auth':
-  path   => '/etc/ssh/ssh_config',
-  ensure => 'present',
-  line   => '    PasswordAuthentication no'
-}
-
-file_line {'Declare indentity file':
-  path   => '/etc/ssh/ssh_config',
-  ensure => 'present',
-  line   => '    IdentityFile ~/.ssh/school'
+# Puppet task advanced ssh
+file { 'config' :
+  ensure  => 'file',
+  path    => '~/.ssh/config',
+  owner   => 'root',
+  group   => 'root',
+  mode    => '0600',
+  content => 'Host 35.196.79.133
+  User ubuntu
+  IdentifyFile ~/.ssh/school'
 }
