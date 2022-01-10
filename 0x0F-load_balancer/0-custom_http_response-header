@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# configure web-02 to be identical to web-01.
-sudo apt-get update -y
-sudo apt-get install nginx -y
-sudo sed -i "15i \\\n\tadd_header X-Served-By $HOSTNAME;" /etc/nginx/nginx.conf
-service nginx restart
+# Web servers are the piece of software generating and serving HTML pages,
+sudo apt-get -y update
+sudo apt-get -y install nginx
+sudo sed -i "60 i\ \tadd_header X-Served-By $HOSTNAME;" /etc/nginx/nginx.conf
+sudo service nginx restart
