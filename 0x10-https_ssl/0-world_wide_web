@@ -1,19 +1,23 @@
 #!/usr/bin/env bash
-# write a Bash script that will display information about subdomain
+# dig awk function
+#shellcheck disable=SC2086
 
-print_dom ()
+my_bash_func()
 {
-    echo -n "The subdomain $2"
-    dig "$2.$1" | grep -A1 'ANSWER SECTION' | grep "$2" | awk '{ print " is a " $4 " record and points to " $5}'
+if [ "$#" -eq 2 ];
+then
+dig $2.$1 | grep -A1 'ANSWER SECTION' | awk -v subdom=$2 'NR==2{print "The subdomain", subdom, "is a", $4, "record and points to", $5 }'
+else
+dig "www".$1 | grep -A1 'ANSWER SECTION' | awk -v subdom="www" 'NR==2{print "The subdomain", subdom, "is a", $4, "record and points to", $5 }'
+dig "lb-01".$1 | grep -A1 'ANSWER SECTION' | awk -v subdom="lb-01" 'NR==2{print "The subdomain", subdom, "is a", $4, "record and points to", $5 }'
+dig "web-01".$1 | grep -A1 'ANSWER SECTION' | awk -v subdom="web-01" 'NR==2{print "The subdomain", subdom, "is a", $4, "record and points to", $5 }'
+dig "web-02".$1 | grep -A1 'ANSWER SECTION' | awk -v subdom="web-02" 'NR==2{print "The subdomain", subdom, "is a", $4, "record and points to", $5 }'
+fi
 }
 
-domain=$1
-if [ $# -eq 2 ]
+if [ "$#" -eq 2 ];
 then
-    print_dom $domain $2
+	my_bash_func "$1" "$2"
 else
-    for subdomain in www lb-01 web-01 web-02
-    do
-	print_dom $domain $subdomain
-    done
+	my_bash_func "$1"
 fi
