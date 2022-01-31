@@ -1,25 +1,35 @@
 #!/usr/bin/python3
-"""Gather data from an API"""
+"""Using and API and work in Json
+"""
 import json
 import requests
 
 
 if __name__ == "__main__":
-    url = 'https://jsonplaceholder.typicode.com/'
-    people = json.loads(requests.get(url + 'users').text)
+    """working on an API
+    """
+    dict_to_json = {}
+    url = 'https://jsonplaceholder.typicode.com'
 
-    data = {}
+    # get user and extrac his/her username
+    response = requests.get('{}/users'.format(url))
+    get_user = response.json()
+    for user in get_user:
+        new_list = []
+        id = user.get('id')
+        username = user.get('username')
 
-    for employee in people:
-        url_string = url + 'todos/?userId=' + str(employee['id'])
-        all_tasks = json.loads(requests.get(url_string).text)
-        tasks = []
-        for task in all_tasks:
-            tmp = {'task': task['title'],
-                   'completed': task['completed'],
-                   'username': employee['username']}
-            tasks.append(tmp)
-        data[employee['id']] = tasks
+        # get Completed and title
+        new_reponse = requests.get('{}/todos/?userId={}'.format(url, id))
+        get_task = new_reponse.json()
 
-    with open("todo_all_people.json", "w") as outfile:
-        json.dump(data, outfile)
+        for item in get_task:
+            new_dict = {}
+            new_dict['username'] = username
+            new_dict['task'] = item.get('title')
+            new_dict['completed'] = item.get('completed')
+            new_list.append(new_dict)
+        dict_to_json["{}".format(id)] = new_list
+
+    with open('todo_all_employees.json', mode="w") as File_json:
+        json.dump(dict_to_json, File_json)
